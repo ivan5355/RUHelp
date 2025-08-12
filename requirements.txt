@@ -1,0 +1,6 @@
+Flask
+Pinecone
+google-generativeai
+numpy
+tqdm
+python-dotenv

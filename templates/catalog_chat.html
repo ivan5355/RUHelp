@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutgers Course Catalog Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>🏛️ Rutgers Course Catalog Assistant</h1>
+            <p>Your guide to official course information, degree requirements, and university policies</p>
+        </div>
+        
+        <div class="specialties">
+            <strong>I can help with:</strong> Course descriptions • Degree requirements • Prerequisites • University policies • General education requirements • Academic programs
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                <h3 style="color: #dc143c; margin-bottom: 10px;">Welcome to the Rutgers Catalog Assistant! 📚</h3>
+                <p>I'm here to help you navigate the official Rutgers course catalog. Ask me about courses, degree requirements, policies, or any other academic information.</p>
+                
+                <div class="example-queries">
+                    <strong>Try asking:</strong><br>
+                    <span class="example-query" onclick="askExample('What are the requirements for a Computer Science major?')">What are the requirements for a Computer Science major?</span>
+                    <span class="example-query" onclick="askExample('Tell me about SEBS core curriculum requirements')">SEBS core curriculum requirements</span>
+                    <span class="example-query" onclick="askExample('What is 11:373:101?')">What is 11:373:101?</span>
+                    <span class="example-query" onclick="askExample('How do I satisfy general education requirements?')">General education requirements</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <span class="loading-dots">●</span>
+            <span class="loading-dots">●</span>
+            <span class="loading-dots">●</span>
+            <span style="margin-left: 10px;">Searching catalog...</span>
+        </div>
+
+        <div class="chat-input-container">
+            <form class="chat-input-form" id="chatForm">
+                <input 
+                    type="text" 
+                    class="chat-input" 
+                    id="chatInput" 
+                    placeholder="Ask about courses, requirements, policies..." 
+                    required
+                    autocomplete="off"
+                />
+                <button type="submit" class="send-button" id="sendButton">
+                    ➤
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
