@@ -70,4 +70,15 @@ Ask a question (e.g., “What are the requirements for a Computer Science major?
 - `database/generate_catalog_embeddings.py`: reads `data/catalog.txt`, creates page-aware text chunks, embeds them, and uploads to Pinecone with `full_text` and `page_number` metadata.
 - `catalog_chatbot.py`: embeds user query, retrieves top matches from Pinecone, builds a context by page, and asks Gemini to answer strictly from that context. Returns the answer plus a bottom Sources list.
 - `app.py`: Flask server with `/` (UI) and `/chat` (API) endpoints.
-- `templates/` + `static/`: simple chat UI, styles, and JS. 
+- `templates/` + `static/`: simple chat UI, styles, and JS.
+
+## Frontend creation using Claude Sonnet 4.0
+The chat frontend (HTML/CSS/JS) was drafted and iterated with the help of Anthropic’s Claude Sonnet 4.0.
+- Generated structure: `templates/catalog_chat.html` (layout, header, sample queries, chat area), `static/css/styles.css` (theme, chat bubbles, responsiveness), and `static/js/script.js` (message rendering, loading state, basic formatting, sources list).
+- Interaction details: messages render as bubbles, example queries auto-fill the input, a loading indicator shows during requests, and sources are listed beneath bot replies.
+- Customizing:
+  - Styles: edit `static/css/styles.css` (colors, spacing, bubble widths, mobile breakpoints).
+  - Message formatting: adjust `formatMessage` in `static/js/script.js`.
+  - Layout/content: edit `templates/catalog_chat.html`.
+
+Claude Sonnet 4.0 was used to rapidly prototype the UI, refine accessibility and readability, and keep the code minimal and framework-light so it works out of the box with Flask’s templating and static assets. 
