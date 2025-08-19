@@ -4,3 +4,4 @@ google-generativeai
 numpy
 tqdm
 python-dotenv
+gunicorn
