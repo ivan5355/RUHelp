@@ -11,7 +11,7 @@ dotenv.load_dotenv()
  
 # Application constants
 INDEX_NAME = "catalog-text-embedding-004"
-BASE_CATALOG_URL = "https://catalogs.rutgers.edu/generated/nb-ug_current/"
+BASE_CATALOG_URL = "https://catalogs.rutgers.edu/generated/nb-ug_2224/"
 
 #default top k is the number of results to return from the search
 TOP_K = 10
@@ -162,6 +162,7 @@ Now, provide your answer based ONLY on the above context:"""
         max_items = min(MAX_CONTEXT_SOURCES, len(relevant_content))
         seen_pages = set()
         sources_list = []
+        
         for item in relevant_content[:max_items]:
             page_raw = item.get('page_number', 0)
             try:
