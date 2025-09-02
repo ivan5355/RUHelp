@@ -1,0 +1,28 @@
+# Virtual environments
+myenv/
+.venv/
+venv/
+env/
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS and misc
+.DS_Store
+*.log
+
+# Local data and scripts not needed at runtime
+data/
+database/
+scripts/
+notebooks/
+tests/
+
+# Git
+.git/
+
+# Vercel project files
+.vercel/ 

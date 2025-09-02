@@ -1,7 +1,4 @@
 Flask
-Pinecone
 google-generativeai
-numpy
-tqdm
+pinecone
 python-dotenv
-gunicorn

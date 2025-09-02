@@ -1,1 +1,23 @@
+# Environment files
 .env
+
+# Vercel local project state
+.vercel/
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+myenv/
+.venv/
+venv/
+env/
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
