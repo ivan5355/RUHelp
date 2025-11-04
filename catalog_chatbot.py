@@ -39,7 +39,7 @@ class CatalogChatbot:
 
     def __init__(self):
         """Initialize the underlying LLM model."""
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        self.model = genai.GenerativeModel('gemini-2.5-flash')
 
 
     def generate_query_embedding(self, query):
@@ -177,3 +177,35 @@ Now, provide your answer based ONLY on the above context:"""
             sources_list.append({"title": title, "link": link})
 
         return {"response": response_text, "sources": sources_list}
+
+
+def health_check():
+    """Return connectivity status for Google Generative AI and Pinecone.
+
+    Does minimal calls to validate that provided API keys are configured and usable.
+    """
+    status = {
+        "google": {"configured": bool(google_api_key), "ok": False},
+        "pinecone": {"configured": bool(pinecone_api_key), "ok": False},
+    }
+
+    # Check Google Generative AI by attempting a tiny embedding request
+    try:
+        _ = genai.embed_content(
+            model="models/text-embedding-004",
+            content="ping",
+            task_type="retrieval_query",
+        )
+        status["google"]["ok"] = True
+    except Exception as e:
+        status["google"]["error"] = str(e)
+
+    # Check Pinecone by listing indexes (does not depend on a particular index existing)
+    try:
+        indexes = [idx.name for idx in pinecone_client.list_indexes()]
+        status["pinecone"]["ok"] = True
+        status["pinecone"]["indexes"] = indexes
+    except Exception as e:
+        status["pinecone"]["error"] = str(e)
+
+    return status
