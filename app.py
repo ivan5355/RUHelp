@@ -8,6 +8,8 @@ chatbot = CatalogChatbot()
 def home():
     return render_template('catalog_chat.html')
 
+import traceback
+
 @app.route('/chat', methods=['POST'])
 def chat_endpoint():
     try:
@@ -20,8 +22,10 @@ def chat_endpoint():
         result = chatbot.chat(user_query)
         return jsonify({'response': result['response'], 'sources': result.get('sources', [])})
 
-    except Exception:
-        return jsonify({'error': 'An error occurred processing your request'}), 500
+    except Exception as e:
+        print("--- CAUGHT EXCEPTION ---")
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/health/keys', methods=['GET'])
