@@ -138,7 +138,8 @@ Now, provide your answer based ONLY on the above context:"""
             response = self.model.generate_content(prompt)
             result_text = response.text or ""
             return result_text.strip()
-        except Exception:
+        except Exception as e:
+            print(f"[ERROR] Gemini API failed: {type(e).__name__}: {e}")
             return (
                 "I encountered an error while generating the response. Please try again."
             )
